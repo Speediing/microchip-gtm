@@ -35,6 +35,14 @@ function Box({
       >
         {initials(bot)}
       </span>
+      {!bot.seat ? (
+        <span className="org-computer" aria-label={`${bot.name} computer`}>
+          <svg viewBox="0 0 28 22" aria-hidden>
+            <rect x="2" y="2" width="24" height="15" rx="2" />
+            <path d="M9 20h10M14 17v3" />
+          </svg>
+        </span>
+      ) : null}
       <span className="org-name">{bot.name}</span>
       <span className="org-blurb">{bot.blurb}</span>
     </>
@@ -59,11 +67,11 @@ export function RosterChart() {
 
   return (
     <section id="roster" className="roster">
-      <h2>A background team for every sales rep</h2>
+      <h2>A small fleet, each with its own computer</h2>
       <p className="section-lede">
-        The work itself is the trigger. A call starts, an email lands, or an
-        account enters the list — and the right agent picks it up. They keep
-        working after the laptop closes. Drafts stay drafts until the rep sends.
+        The work itself can be the trigger. A change opens, a regression lands,
+        or a decision is approved. The right agent picks it up and returns with
+        an artifact for a person to review.
       </p>
 
       <div className="org" role="tree">

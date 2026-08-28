@@ -2,6 +2,7 @@ import { CompareTable } from "@/components/CompareTable";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
 import { QuoteWall } from "@/components/QuoteWall";
+import { RosterChart } from "@/components/RosterChart";
 import { SiteNav } from "@/components/SiteNav";
 import { JOBS } from "@/data/jobs";
 
@@ -12,7 +13,7 @@ export default function HomePage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="hero-watercolor-image"
-          src="/brand/watercolor-pad.png"
+          src="/brand/microchip-watercolor-hero.webp"
           alt=""
         />
         <SiteNav />
@@ -23,24 +24,28 @@ export default function HomePage() {
           <HeroTelemetry />
           <section className="hero">
             <div>
-              <p className="eyebrow">A proactive agent for every Datadog rep</p>
-              <h1>The agents that work while your reps sell.</h1>
+              <p className="eyebrow">
+                A sample agent fleet for Microchip Technology
+              </p>
+              <h1>The agents that keep engineering work moving.</h1>
               <p className="hero-intro">
-                Grok Bot listens to calls, watches the inbox, and researches
-                accounts in the background. Work triggers it — not another
-                prompt.
+                Grok Bot gives each agent its own computer, context, and
+                routine. They can read across the tools a team already uses,
+                prepare the work, and return with an artifact for review.
               </p>
             </div>
           </section>
 
           <section className="usecase-framing">
-            <p className="eyebrow">Three sample use cases</p>
+            <p className="eyebrow">Three workflows to discuss</p>
             <h2>
-              Grok Bot gives every seller their own fleet of always-available
-              agent teammates. Anything your sellers do today can be done
-              through Grok Bot.
+              Start with work around PCIe Gen6 and data center connectivity,
+              then teach the fleet the rest of the engineering system.
             </h2>
-            <p>These are three examples from millions — not the boundary.</p>
+            <p>
+              These are examples based on public priorities. They do not
+              describe Microchip&apos;s current workflow.
+            </p>
           </section>
 
           <div className="metric-grid">
@@ -58,6 +63,7 @@ export default function HomePage() {
               </a>
             ))}
           </div>
+          <RosterChart />
         </div>
 
         <div id="jobs">
@@ -69,7 +75,7 @@ export default function HomePage() {
 
       <div className="orbit-break" aria-hidden>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/watercolor-orbit.png" alt="" />
+        <img src="/brand/microchip-watercolor-orbit.webp" alt="" />
       </div>
 
       <div className="report">
@@ -79,15 +85,13 @@ export default function HomePage() {
 
       <footer className="site-footer">
         <div>
-          <p className="footer-title">Cursor for Datadog</p>
-          <p>Grok Bot for Datadog sales</p>
+          <p className="footer-title">Microchip Technology × SpaceXAI</p>
+          <p>A private working leave-behind</p>
         </div>
         <address className="footer-contact">
-          <p>Datadog&apos;s existing Cursor contact</p>
-          <strong>Madeline Ingleby</strong>
-          <a href="mailto:madeline.ingleby@cursor.com">
-            madeline.ingleby@cursor.com
-          </a>
+          <p>Your Cursor contact</p>
+          <strong>Tyler Pickler</strong>
+          <a href="mailto:tyler.pickler@cursor.com">tyler.pickler@cursor.com</a>
         </address>
       </footer>
     </main>

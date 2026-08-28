@@ -1,31 +1,42 @@
-# Grok Bot for Datadog GTM
+# Microchip Technology x SpaceXAI
 
-Passworded site. Grok Bot from SpaceXAI, for Datadog GTM.
+Password-protected customer leave-behind for Microchip Technology.
 
-## What it is
+## Stack
 
-Three GTM jobs on one page. Each job has a short problem statement, an interactive Grok Bot demo, and the matching Krista Letz clips under that demo. Below that: a light index of the clips and the public Grok Bot quote wall.
+- Next.js 15.5
+- React 19
+- Geist
+- vGPU
+- TypeScript
+- App Router under `src/`
 
 ## Run locally
 
 ```bash
 cp .env.example .env.local
-npm install
+npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Default password is `land2expand` (override with `SITE_PASSWORD`).
+Open [http://localhost:3000](http://localhost:3000). Set `SITE_PASSWORD` in
+`.env.local`. The checked-in example uses the shared preview password.
 
-## Krista clips
+## Brand assets
 
-Download into `private/media/krista-clips/` from the GitHub release (served only through the passworded `/api/media/...` route):
+The displayed horizontal wordmark was published by the
+[official MicrochipTech organization](https://github.com/MicrochipTech/E-nose-BME680/commit/682ebdfdad11570cf477482e9a8ee2d1df0a743c).
+It includes the symbol, name, and registration mark as one unit. The official
+[Microchip logos page](https://www.microchip.com/en-us/about/legal-information/logos)
+and its usage guide remain the source of truth.
 
-```bash
-gh release download krista-gtm-clips-720p-2026-08-26 \
-  --repo Speediing/grok-bot-quotes \
-  --dir private/media/krista-clips
-```
+The SpaceXAI wordmark is the existing template asset. The watercolor scenes are
+original assets made for this leave-behind.
 
 ## Deploy
 
-Preview only under the `jasonwiker` Vercel team, project name `datadog-cro`. Set `SITE_PASSWORD=land2expand`. Do not promote to a public production domain until Jason says so.
+The intended production URL is
+[microchip-grokbot.vercel.app](https://microchip-grokbot.vercel.app).
+
+Set `SITE_PASSWORD` in the Vercel project before promoting a deployment. The
+site is private and sends no-index directives.

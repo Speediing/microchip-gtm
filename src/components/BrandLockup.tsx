@@ -1,16 +1,19 @@
 export function BrandLockup({
   size = "md",
+  invert = false,
 }: {
   size?: "sm" | "md" | "lg";
   invert?: boolean;
 }) {
   return (
-    <div className={`brand-lockup brand-lockup-${size}`}>
+    <div
+      className={`brand-lockup brand-lockup-${size}${invert ? " is-invert" : ""}`}
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/brand/datadog-wordmark.svg"
-        alt="Datadog"
-        className="brand-dd"
+        src="/brand/microchip-wordmark.jpg"
+        alt="Microchip Technology"
+        className="brand-microchip"
       />
       <span className="brand-times" aria-hidden>
         ×

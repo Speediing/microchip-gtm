@@ -4,8 +4,10 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Grok Bot for Datadog sales",
-  description: "Grok Bot for Datadog sales",
+  metadataBase: new URL("https://microchip-grokbot.vercel.app"),
+  title: "Microchip x SpaceXAI",
+  description:
+    "A private Microchip Technology leave-behind for a sample Grok Bot agent fleet.",
   robots: {
     index: false,
     follow: false,

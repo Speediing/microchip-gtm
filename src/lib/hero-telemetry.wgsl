@@ -38,19 +38,39 @@ fn hash21(p: vec2f) -> f32 {
   return fract(sin(dot(p, vec2f(127.1, 311.7))) * 43758.5453);
 }
 
-fn datadogMark(p: vec2f) -> f32 {
-  let q = rotate(p, -0.14);
-  let plate = sdRoundedBox(q, vec2f(0.20, 0.20), 0.055);
-  let head = sdEllipse(q - vec2f(0.0, -0.01), vec2f(0.105, 0.125));
-  let ear = sdEllipse(rotate(q - vec2f(-0.07, -0.10), 0.5), vec2f(0.055, 0.085));
-  let snout = sdEllipse(q - vec2f(0.10, 0.04), vec2f(0.08, 0.055));
-  let body = opSmoothUnion(opSmoothUnion(head, ear, 0.03), snout, 0.04);
-  var mark = opSmoothSub(plate, body, 0.012);
-  let screen = sdRoundedBox(q - vec2f(0.07, 0.11), vec2f(0.075, 0.055), 0.01);
-  let bezel = sdRoundedBox(q - vec2f(0.07, 0.11), vec2f(0.088, 0.068), 0.014);
-  mark = opSmoothUnion(mark, bezel, 0.01);
-  mark = opSmoothSub(mark, screen, 0.008);
-  return mark;
+fn chipMark(p: vec2f) -> f32 {
+  let q = rotate(p, -0.1);
+  var mark = sdRoundedBox(q, vec2f(0.16, 0.16), 0.025);
+  for (var i = 0; i < 5; i = i + 1) {
+    let fi = f32(i);
+    let offset = -0.12 + fi * 0.06;
+    let horizontalPin = sdRoundedBox(
+      q - vec2f(0.205, offset),
+      vec2f(0.05, 0.009),
+      0.004,
+    );
+    let verticalPin = sdRoundedBox(
+      q - vec2f(offset, 0.205),
+      vec2f(0.009, 0.05),
+      0.004,
+    );
+    let oppositeHorizontalPin = sdRoundedBox(
+      q - vec2f(-0.205, offset),
+      vec2f(0.05, 0.009),
+      0.004,
+    );
+    let oppositeVerticalPin = sdRoundedBox(
+      q - vec2f(offset, -0.205),
+      vec2f(0.009, 0.05),
+      0.004,
+    );
+    mark = opSmoothUnion(mark, horizontalPin, 0.006);
+    mark = opSmoothUnion(mark, verticalPin, 0.006);
+    mark = opSmoothUnion(mark, oppositeHorizontalPin, 0.006);
+    mark = opSmoothUnion(mark, oppositeVerticalPin, 0.006);
+  }
+  let core = sdRoundedBox(q, vec2f(0.085, 0.085), 0.014);
+  return opSmoothSub(mark, core, 0.008);
 }
 
 fn ribbons(p: vec2f, t: f32) -> f32 {
@@ -79,23 +99,23 @@ fn fs_main(@location(0) uv: vec2f) -> @location(0) vec4f {
   let t = params.time;
 
   let breathe = 1.0 + 0.02 * sin(t * 0.85);
-  let dogP = (p - vec2f(0.46, -0.12)) / breathe;
-  let dDog = datadogMark(dogP);
-  let fill = 1.0 - smoothstep(-0.0015, 0.004, dDog);
-  let line = 1.0 - smoothstep(0.0, 0.0055, abs(dDog));
-  let glow = exp(-max(dDog, 0.0) * 16.0);
+  let chipP = (p - vec2f(0.46, -0.12)) / breathe;
+  let dChip = chipMark(chipP);
+  let fill = 1.0 - smoothstep(-0.0015, 0.004, dChip);
+  let line = 1.0 - smoothstep(0.0, 0.0055, abs(dChip));
+  let glow = exp(-max(dChip, 0.0) * 16.0);
 
   let traces = ribbons(p, t);
   let cell = floor(uv * vec2f(32.0, 18.0));
   let h = hash21(cell);
   let spark = step(0.972, h) * (0.45 + 0.55 * sin(t * 1.8 + h * 40.0));
 
-  let purple = vec3f(0.388235, 0.172549, 0.650980);
+  let red = vec3f(0.827451, 0.125490, 0.152941);
   let paper = vec3f(0.960784, 0.945098, 0.909804);
   let leftClear = smoothstep(0.34, 0.62, uv.x);
   var a = fill * 0.08 + line * 0.28 + glow * 0.08 + traces * 0.32 + spark * 0.06;
   a *= 0.55 * leftClear;
   a = clamp(a, 0.0, 0.34);
-  let col = mix(purple, paper, spark * 0.45 + line * 0.05);
+  let col = mix(red, paper, spark * 0.45 + line * 0.05);
   return vec4f(col * a, a);
 }

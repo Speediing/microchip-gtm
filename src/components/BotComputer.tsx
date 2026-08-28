@@ -21,9 +21,7 @@ export function BotComputer({
   playback: DemoPlayback;
 }) {
   const beat = activeBeat(jobId, playback);
-
   const message = playback.current;
-  const sent = message ? Boolean(playback.sentDrafts[message.id]) : false;
 
   if (!beat) return null;
 
@@ -61,12 +59,7 @@ export function BotComputer({
           <div className="pc-main">
             <p className="pc-pill">{beat.pill}</p>
             <div className="pc-page">
-              <SiteScreen
-                beat={beat}
-                message={message}
-                account={playback.account}
-                sent={sent}
-              />
+              <SiteScreen beat={beat} message={message} />
             </div>
           </div>
         </div>

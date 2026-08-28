@@ -1,17 +1,7 @@
-export type ClipId =
-  | "01-morning-inbox"
-  | "02-prospecting-pg"
-  | "03-slides-granola"
-  | "04-engineer-bugbot"
-  | "05-forecast-sfdc"
-  | "06-customer-expert"
-  | "07-customer-exec-brief"
-  | "08-chief-groupchat";
-
 export type JobId =
-  | "standardize-room"
-  | "legal-redlines"
-  | "attach-engine";
+  | "map-change"
+  | "trace-impact"
+  | "carry-production";
 
 export type ParticipantRole = "you" | "bot";
 
@@ -49,55 +39,14 @@ export type StoryScene =
 
 export type StoryVisual =
   | {
-      kind: "live-call";
+      kind: "work-intake";
+      source: string;
       title: string;
-      people: { initials: string; name: string }[];
+      detail: string;
     }
   | {
-      kind: "live-transcript";
-      timestamp: string;
-      speaker: string;
-      quote: string;
-      signals: string[];
-    }
-  | {
-      kind: "deck-update";
-      eyebrow: string;
-      headline: string;
-      product: string;
-      status: string;
-    }
-  | {
-      kind: "procurement-email";
-      sender: string;
-      subject: string;
-      questions: number;
-    }
-  | {
-      kind: "answers-found";
-      sources: { name: string; answer: string }[];
-      status: string;
-    }
-  | {
-      kind: "reply-ready";
-      to: string;
-      subject: string;
-      status: string;
-    }
-  | {
-      kind: "account-research";
-      account: string;
-      sources: string[];
-      signal: string;
-    }
-  | {
-      kind: "three-why";
-      items: { label: string; answer: string }[];
-    }
-  | {
-      kind: "outreach-ready";
-      person: string;
-      channels: string[];
+      kind: "context-scan";
+      sources: { name: string; finding: string }[];
       status: string;
     };
 
@@ -227,14 +176,6 @@ export type DemoThread = {
   messages: DemoMessage[];
 };
 
-export type Clip = {
-  id: ClipId;
-  file: string;
-  poster: string;
-  title: string;
-  caption: string;
-};
-
 export type CroJob = {
   id: JobId;
   number: number;
@@ -246,7 +187,6 @@ export type CroJob = {
   storyboard: StoryBeat[];
   unlock: string;
   outcome: string;
-  clips: ClipId[];
   demo: DemoThread;
 };
 
