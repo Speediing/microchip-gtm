@@ -92,7 +92,9 @@ button,
 .pc-screen-bar button,
 .gb-composer button,
 .imessage-account button,
-.gb-title-actions button {
+.gb-title-actions button,
+.hero-phone-jobs button,
+.hero-phone .replay {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
@@ -110,7 +112,9 @@ button,
 .pc-screen-bar button,
 .gb-composer button,
 .imessage-account button,
-.gb-title-actions button {
+.gb-title-actions button,
+.hero-phone-jobs button,
+.hero-phone .replay {
   transition: transform 140ms var(--ease-out);
 }
 
@@ -127,7 +131,9 @@ button:active:not(:focus-visible),
 .pc-screen-bar button:active:not(:focus-visible),
 .gb-composer button:active:not(:focus-visible),
 .imessage-account button:active:not(:focus-visible),
-.gb-title-actions button:active:not(:focus-visible) {
+.gb-title-actions button:active:not(:focus-visible),
+.hero-phone-jobs button:active:not(:focus-visible),
+.hero-phone .replay:active:not(:focus-visible) {
   transform: scale(0.97);
 }
 
@@ -458,9 +464,11 @@ button:active:not(:focus-visible),
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 22.5rem);
+  align-items: center;
+  gap: 2.5rem 3rem;
   min-height: 450px;
-  padding: 96px 0 64px;
+  padding: 64px 0 48px;
   overflow: visible;
 }
 
@@ -485,12 +493,12 @@ button:active:not(:focus-visible),
 .hero h1,
 .hero-line {
   max-width: 940px;
-  margin: 28px 0 30px;
+  margin: 22px 0 22px;
   color: var(--ink);
-  font-size: clamp(55px, 8vw, 116px);
+  font-size: clamp(48px, 4.8vw, 78px);
   font-weight: 460;
   letter-spacing: -0.072em;
-  line-height: 0.86;
+  line-height: 0.9;
   overflow-wrap: break-word;
 }
 
@@ -500,6 +508,273 @@ button:active:not(:focus-visible),
   color: var(--muted);
   font-size: 17px;
   line-height: 1.5;
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.hero-phone-jobs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+}
+
+.hero-phone-jobs button {
+  appearance: none;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.hero-phone-jobs button.is-on {
+  color: #fff;
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.hero-bot-demo {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+}
+
+.hero-phone {
+  position: relative;
+  display: flex;
+  width: min(100%, 20.5rem);
+  height: 34rem;
+  overflow: hidden;
+  flex-direction: column;
+  border: 3px solid #1a1a1c;
+  border-radius: 2.4rem;
+  color: #111;
+  background: #fff;
+  box-shadow:
+    0 1.5rem 3rem rgba(32, 35, 31, 0.12),
+    inset 0 0 0 1px rgba(17, 17, 17, 0.06);
+}
+
+.hero-phone .notch {
+  position: absolute;
+  z-index: 3;
+  top: 0.7rem;
+  left: 50%;
+  width: 6.4rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: #111;
+  transform: translateX(-50%);
+}
+
+.hero-phone .header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 4.6rem;
+  padding: 2.15rem 0.7rem 0.55rem;
+  border-bottom: 1px solid #eee;
+  background: rgba(250, 250, 250, 0.94);
+}
+
+.hero-phone .back {
+  width: 1.15rem;
+  color: #8e8e93;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.hero-phone .avatar {
+  display: inline-grid;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.hero-phone .who {
+  min-width: 0;
+  flex: 1;
+}
+
+.hero-phone .who strong {
+  display: block;
+  overflow: hidden;
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero-phone .live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  color: #8e8e93;
+  font-size: 0.7rem;
+}
+
+.hero-phone .live i {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: #d1d1d6;
+}
+
+.hero-phone .live.is-on {
+  color: #1c1c1e;
+}
+
+.hero-phone .live.is-on i {
+  background: #34c759;
+}
+
+.hero-phone .replay {
+  appearance: none;
+  flex-shrink: 0;
+  padding: 0.28rem 0.55rem;
+  border: 1px solid #e5e5ea;
+  border-radius: 999px;
+  background: #fff;
+  color: #1c1c1e;
+  font: inherit;
+  font-size: 0.68rem;
+  cursor: pointer;
+}
+
+.hero-phone .thread {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.85rem 0.8rem 0.4rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #fff;
+}
+
+.hero-phone .note {
+  align-self: center;
+  max-width: 90%;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: #f2f2f7;
+  color: #636366;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+.hero-phone .row {
+  display: flex;
+  max-width: 88%;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.hero-phone .row.out {
+  align-self: flex-end;
+}
+
+.hero-phone .row.in {
+  align-self: flex-start;
+}
+
+.hero-phone .face {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.hero-phone .bubble {
+  padding: 0.55rem 0.75rem;
+  border-radius: 1.15rem;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  white-space: pre-wrap;
+}
+
+.hero-phone .bubble.out {
+  color: #fff;
+  background: var(--imessage-blue);
+  border-bottom-right-radius: 0.35rem;
+}
+
+.hero-phone .bubble.in {
+  color: #111;
+  background: var(--imessage-gray);
+  border-bottom-left-radius: 0.35rem;
+}
+
+.hero-phone .bubble.typing {
+  display: inline-flex;
+  gap: 0.28rem;
+  align-items: center;
+  padding: 0.7rem 0.9rem;
+}
+
+.hero-phone .bubble.typing span {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: #8e8e93;
+  animation: typing-dot 1.05s linear infinite;
+}
+
+.hero-phone .bubble.typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.hero-phone .bubble.typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.hero-phone .composer {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.8rem 0.85rem;
+  border-top: 1px solid #eee;
+  background: rgba(250, 250, 250, 0.96);
+}
+
+.hero-phone .plus {
+  color: #8e8e93;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.hero-phone .field {
+  flex: 1;
+  min-width: 0;
+  padding: 0.48rem 0.8rem;
+  overflow: hidden;
+  border: 1px solid #e5e5ea;
+  border-radius: 999px;
+  color: #8e8e93;
+  background: #fff;
+  font-size: 0.82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero-phone .mic {
+  display: grid;
+  place-items: center;
+  color: #8e8e93;
 }
 
 .usecase-framing {
@@ -5013,6 +5288,19 @@ button:active:not(:focus-visible),
   .demo-stage.is-split .gb-cols {
     grid-template-columns: minmax(0, 1fr) 16.75rem;
   }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 19.5rem);
+    gap: 1.75rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 6.2vw, 72px);
+  }
+
+  .hero-phone {
+    height: 34.5rem;
+  }
 }
 
 @media (max-width: 800px) {
@@ -5045,6 +5333,16 @@ button:active:not(:focus-visible),
     min-height: 0;
     padding: 96px 0 36px;
     gap: 28px;
+  }
+
+  .hero-bot-demo {
+    justify-self: center;
+    width: 100%;
+  }
+
+  .hero-phone {
+    width: min(100%, 21rem);
+    height: 36rem;
   }
 
   .hero h1,
@@ -5639,6 +5937,14 @@ button:active:not(:focus-visible),
   .job-value,
   .hero-intro {
     overflow-wrap: break-word;
+  }
+
+  .hero-phone {
+    height: 32.5rem;
+  }
+
+  .hero-phone-jobs {
+    margin-top: 1.25rem;
   }
 }
 

@@ -1,4 +1,5 @@
 import { CompareTable } from "@/components/CompareTable";
+import { HeroDemo } from "@/components/HeroDemo";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
 import { QuoteWall } from "@/components/QuoteWall";
@@ -22,19 +23,7 @@ export default function HomePage() {
       <div className="report">
         <div className="report-hero">
           <HeroTelemetry />
-          <section className="hero">
-            <div>
-              <p className="eyebrow">
-                A sample agent fleet for Microchip Technology
-              </p>
-              <h1>The agents that keep engineering work moving.</h1>
-              <p className="hero-intro">
-                Grok Bot gives each agent its own computer, context, and
-                routine. They can read across the tools a team already uses,
-                prepare the work, and return with an artifact for review.
-              </p>
-            </div>
-          </section>
+          <HeroDemo />
 
           <section className="usecase-framing">
             <p className="eyebrow">Three workflows to discuss</p>
